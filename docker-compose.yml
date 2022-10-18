@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - db-network
+
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      args:
+        VARIANT: 16-bullseye
+    volumes:
+      - .:/workspace:cached
+    env_file:
+      - .env
+    command: sleep infinity
+    depends_on:
+      - db
+    networks:
+      - proxy-network
+      - db-network
+
+  proxy:
+    image: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./client:/usr/share/nginx/html
+
+    ports:
+      - 8080:80
+    networks:
+      - proxy-network
+    depends_on:
+      - api
+
+volumes:
+  postgres-data:
+
+
+networks:
+  proxy-network:
+  db-network:
