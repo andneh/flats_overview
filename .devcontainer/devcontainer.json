@@ -2,7 +2,7 @@
     "name": "Flats",
     "dockerComposeFile": "../docker-compose.yml",
     "service": "api",
-    "workspaceFolder": "/workspace",
+    "workspaceFolder": "/home/node/api",
     // Configure tool-specific properties.
     "customizations": {
         // Configure properties specific to VS Code.
@@ -17,7 +17,7 @@
     // This can be used to network with other containers or with the host.
     // "forwardPorts": [3000, 5432],
     // Use 'postCreateCommand' to run commands after the container is created.
-    // "postCreateCommand": "yarn install",
+    // "postCreateCommand": "npm install -g",
     // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
     "remoteUser": "node"
 }

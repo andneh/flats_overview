@@ -10,14 +10,14 @@ const connection: Connection = {
     database: String(process.env.POSTGRES_DB),
 };
 
-export const run_async_querry = async (query: string, log_msg: string = "", callback = (res: any) => { }) => {
+export const run_async_query = async (query: string, log_msg: string = "", callback = (res: any) => { }) => {
     console.log(log_msg + ':');
     const client = new pg.Client(connection);
     client.connect((err: any) => console.log(err ? err : "1. DB connected."));
 
     try {
         const res = await client.query(query);
-        console.log("2. DB runned: \t" + res.command);
+        console.log("2. DB did: \t" + res.command);
         client.end((err: any) => console.log(err ? err : "3. DB Disconnected.\n"));
         return res.rowAsArray ? [] : res.rows;
     } catch (err) {
@@ -28,5 +28,5 @@ export const run_async_querry = async (query: string, log_msg: string = "", call
 }
 
 export const drop_flats = async () => {
-    await run_async_querry("DROP TABLE flat_table;", "Droping table");
+    await run_async_query("DROP TABLE flat_table;", "Dropping table");
 };

@@ -12,16 +12,15 @@ services:
       - db-network
 
   api:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-      args:
-        VARIANT: 16-bullseye
+    image: node:18
+    user: node
+    working_dir: /home/node/api
     volumes:
-      - .:/workspace:cached
+      - ./api:/home/node/api
+      - ./client:/home/node/client
     env_file:
       - .env
-    command: sleep infinity
+    command: bash -c "npm install; npm run build; npm run setup; npm run start;"
     depends_on:
       - db
     networks:
@@ -33,7 +32,6 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./client:/usr/share/nginx/html
-
     ports:
       - 8080:80
     networks:
