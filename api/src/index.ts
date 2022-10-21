@@ -4,7 +4,17 @@ import * as db from './modules/db';
 const app = express();
 const port = 3000;
 
+function delay(d: number) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(1);
+        }, d);
+    });
+}
+
 app.get("/api/", async (req: any, res: any) => {
+    let i = 0;
+    while (i != 100000) { i += 1; }
     await res.json(
         await db.run_async_query("select * from flat_table limit 500;", "Getting items")
     );

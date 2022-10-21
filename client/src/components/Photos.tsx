@@ -3,8 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { flat } from '../types/flat';
 import "../styles/FlatsList.css";
 
-const Protos = (flat: flat) => {
-
+const Photos = (flat: flat) => {
     return (
         <Carousel variant="dark">
             <Carousel.Item>
@@ -32,4 +31,4 @@ const Protos = (flat: flat) => {
     );
 }
 
-export default Protos;
+export default Photos;
