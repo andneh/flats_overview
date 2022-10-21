@@ -5,7 +5,7 @@ import { flat } from '../types/flat';
 import "../styles/Card.css";
 
 
-const Flat_Card = (flat: flat) => (
+const FlatCard = (flat: flat) => (
     <div>
         <Card style={{ width: '18rem' }}>
             <Photos {...flat} />
@@ -17,4 +17,4 @@ const Flat_Card = (flat: flat) => (
 );
 
 
-export default Flat_Card;
+export default FlatCard;
