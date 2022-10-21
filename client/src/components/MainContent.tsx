@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-
+import Placeholder from 'react-bootstrap/Placeholder';
 import Card from './Crad';
 import Loader from './Loader';
-import { falt } from '../types/flat';
-// import flats from '../modules/api';
+import { flat } from '../types/flat';
 
-// const Cards = 
 const Main = () => {
     const [flats, loadFlats] = React.useState([]);
-
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
@@ -21,11 +18,28 @@ const Main = () => {
             });
     }, []);
 
+    let i = 0;
+    
     return (
         <main className="Main" >
-            {/* {loading && <Loader />} */}
-
-            {flats.length ? (flats.map((flat: falt) => (<Card {...flat} />))) : loading ? null : (<p>No todos.</p>)}
+            {loading && (
+                <>
+                    <Placeholder as="p" animation="glow">
+                        <Placeholder xs={12} />
+                    </Placeholder>
+                    <Placeholder as="p" animation="wave">
+                        <Placeholder xs={12} />
+                    </Placeholder>
+                </>
+            )}
+            <div className="Flats">
+                {flats.length ? (flats.map((flat: flat) => {
+                    if (i < 2) {
+                        i += 1;
+                        return (<Card {...flat} />);
+                    }
+                })) : loading ? null : (<p>No flats.</p>)}
+            </div>
 
         </main>
     )

@@ -6,7 +6,7 @@ const port = 3000;
 
 app.get("/api/", async (req: any, res: any) => {
     await res.json(
-        await db.run_async_query("select * from flat_table;", "Getting items")
+        await db.run_async_query("select * from flat_table limit 500;", "Getting items")
     );
 });
 

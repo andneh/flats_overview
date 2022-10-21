@@ -1,14 +1,19 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Protos from './Photos';
+import { flat } from '../types/flat';
 import "../styles/Card.css";
-import { falt } from '../types/flat';
 
-const Card = (flat: falt) => (
-    <div className="Card" >
-        <h1>{flat.title}</h1>
-        <img src={flat.image1} alt="123" />
-        <img src={flat.image2} alt="123" />
-        <img src={flat.image3} alt="123" />
-    </div>
+
+const Card = (flat: flat) => (
+    <Card style={{ width: '18rem' }}>
+        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Photos {...flat} />
+        <Card.Body>
+            <Card.Title>{falt.title}</Card.Title>
+        </Card.Body>
+    </Card>
 );
+
 
 export default Card;

@@ -1,6 +1,6 @@
-export interface falt {
+export interface flat {
     title: string;
     image1: string;
-    image2: stringl;
+    image2: string;
     image3: string;
 }
