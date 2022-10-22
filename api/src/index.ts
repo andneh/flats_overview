@@ -13,8 +13,6 @@ function delay(d: number) {
 }
 
 app.get("/api/", async (req: any, res: any) => {
-    let i = 0;
-    while (i != 100000) { i += 1; }
     await res.json(
         await db.run_async_query("select * from flat_table limit 500;", "Getting items")
     );

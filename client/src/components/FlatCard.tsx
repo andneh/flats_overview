@@ -6,14 +6,12 @@ import "../styles/Card.css";
 
 
 const FlatCard = (flat: flat) => (
-    <div>
-        <Card style={{ width: '18rem' }}>
-            <Photos {...flat} />
-            <Card.Body>
-                <Card.Title>{flat.title}</Card.Title>
-            </Card.Body>
-        </Card>
-    </div>
+    <Card className='shadow-sm'>
+        <Photos {...flat} />
+        <Card.Body>
+            <Card.Title>{flat.title}</Card.Title>
+        </Card.Body>
+    </Card>
 );
 
 
