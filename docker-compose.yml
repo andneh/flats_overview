@@ -20,7 +20,7 @@ services:
       - ./client:/home/node/client
     env_file:
       - .env
-    command: bash -c "npm install; npm run build; npm run setup; npm run start;"
+    command: bash -c "npm install; npm run setup; npm run start;"
     depends_on:
       - db
     networks:
