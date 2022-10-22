@@ -7,7 +7,7 @@ import "../styles/Card.css";
 
 const FlatCard = (flat: flat) => (
     <Card className='shadow-sm'>
-        <Photos {...flat} />
+        <Photos {...flat.images} />
         <Card.Body>
             <Card.Title>{flat.title}</Card.Title>
         </Card.Body>

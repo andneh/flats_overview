@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import Pagination from './Pagination';
-// import FlatCard from './FlatCard';
-// import { flat } from '../types/flat';
 import Grid from './Grid';
+import Pagination from './Pagination';
 
 const Main = () => {
     const [flats, loadFlats] = React.useState([]);
@@ -17,15 +15,13 @@ const Main = () => {
                 // setLoading(false);
             });
     }, []);
-    // console.log(page);
-    // chPage(0);
-    // console.log(page);
+
     return (
         <main className="Main" >
-            <div className='album py-5 bg-light'>
-                <Grid {...{ flats, page, chPage }} />
-            </div>
+            <Grid {...{ flats, page }} />
+            <Pagination {...{ page, chPage }} />
         </main>
+
 
     )
 };
